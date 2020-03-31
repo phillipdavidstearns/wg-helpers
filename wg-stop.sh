@@ -29,7 +29,7 @@ while getopts "i:h:" opt; do
 done
 
 if [[ -z "$IFACE" ]]; then
-	sudo rm /var/run/wireguard/*
+	sudo rm /var/run/wireguard/* >/dev/null 2>&1
 else
 	sudo rm "/var/run/wireguard/$IFACE.sock"
 fi

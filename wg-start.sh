@@ -1,11 +1,24 @@
 #!/bin/bash
 
 #----------------------------------------------------------------
-# This is where you can set some of 
 
-WG_START_CONFIG_PATH="/etc/wg-start.conf"
+# how to use this thing
+function usage {
+	echo -e "\nUsage: wg-start.sh -i iface_name -a ip_address -c path_to_conf_file"
+	echo -e "\t-h\t\tdisplay this help message"
+	echo -e "\t-i\t\ttunnel interface name (e.g. utun0)"
+	echo -e "\t-a\t\tip address (e.g. 10.0.0.1)"
+	echo -e "\t-c\t\t/full/path/to/file.conf (e.g. /etc/wireguard/wg0.conf)"
+	echo -e "\n"
+}
 
 #----------------------------------------------------------------
+# This is where you can set some of 
+
+WG_START_CONFIG_PATH="/etc/wireguard/wg-start.conf"
+
+#----------------------------------------------------------------
+# discover an unused utun interface name
 
 function find_interface {
 	local i=0
@@ -21,6 +34,7 @@ function find_interface {
 }
 
 #----------------------------------------------------------------
+# Read the config located at "/etc/wireguard/wg-start.conf" and set variables
 
 # Default values if no config file exists AND no arguments are passed
 function fetch_config {
@@ -52,7 +66,7 @@ IFACE=$(fetch_config IFACE)
 
 #----------------------------------------------------------------
 
-# check whether IP address is valid
+# check whether an IP address is a valid one
 function ip_is_valid {
 
 	local  ip="$1"
@@ -65,18 +79,6 @@ function ip_is_valid {
 		stat="$?"
     fi
     return $stat
-}
-
-#----------------------------------------------------------------
-
-# how to use this thing
-function usage {
-	echo -e "\nUsage: wg-start.sh -i iface_name -a ip_address -c path_to_conf_file"
-	echo -e "\t-h\t\tdisplay this help message"
-	echo -e "\t-i\t\ttunnel interface name (e.g. utun0)"
-	echo -e "\t-a\t\tip address (e.g. 10.0.0.1)"
-	echo -e "\t-c\t\t/full/path/to/file.conf (e.g. /etc/wireguard/wg0.conf)"
-	echo -e "\n"
 }
 
 #----------------------------------------------------------------
