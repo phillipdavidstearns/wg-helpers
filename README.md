@@ -32,8 +32,8 @@ Usage: wg-start.sh -i iface_name -a ip_address -c path_to_conf_file
 
 ## Create Configuration File
 
-1. `sudo mkdir /etc/wireguard/`
-1. `sudo nano /etc/wireguard/wg0.conf`
+1. `$ sudo mkdir /etc/wireguard/`
+1. `$ sudo nano /etc/wireguard/wg0.conf`
 
 Enter:
 
@@ -61,7 +61,7 @@ PersistentKeepalive = 20
 
 ## Using `wg-quick` (OSX)
 
-1. `wg-quick up /etc/wireguard/wg0.conf`
+1. `$ wg-quick up /etc/wireguard/wg0.conf`
 
 ## Using custom scripts
 
