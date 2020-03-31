@@ -1,4 +1,4 @@
-# Wireguard Helper Scripts
+# OSX Wireguard Helper Scripts
 
 scripts for setting up a wireguard interface on OSX when `wg-quick` fails
 
